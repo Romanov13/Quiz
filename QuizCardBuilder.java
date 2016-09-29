@@ -41,6 +41,13 @@ public class QuizCardBuilder {
 		aScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 		
 		JButton nextButton = new JButton("Next Button");
-    
+    		cardList = new ArrayList<QuizCard>();
+		
+		JLabel qLabel = new JLabel("Question");
+		JLabel aLabel = new JLabel("Answer");
+		
+		mainPanel.add(qPanel);
+		mainPanel.add(aPanel);
+		
 	}
 }
