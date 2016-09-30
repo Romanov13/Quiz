@@ -58,3 +58,36 @@ public void actionPerformed(ActionEvent ev){
 if(isShowAnswer){
 // show the answer because they've seen the question
 display.setText(currentCard.getAnswer());
+  nextButton.setText("Next Card");
+  isShowAnswer = false;
+} else {
+  // show the next question
+  if (currentCardIndex < cardList.size()){
+    
+    showNextCard();
+    
+  } else {
+    // there are no more cards
+    display.setText("That was last card");
+    nextButton.setEnabled(false);
+  }
+}
+}
+}
+  
+  public class OpenMenuListener implements ActionListener {
+    public void actionPerformed(ActionEvent ev){
+      JFileChooser fileOpen = new JFileChooser();
+      fileOpen.showOpenDialog(frame);
+      loadFile(fileOpen.getSelectedFile());
+    }
+  }
+  
+  private void loadFile(File file){
+    cardList = new ArrayList<QuizCard>();
+    try{
+      BufferedReader reader = new BufferedReader(new FileReader(file));
+      String line = null;
+      while ((line = reader.readLine()) != null){
+        
+    
