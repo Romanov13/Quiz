@@ -89,5 +89,29 @@ display.setText(currentCard.getAnswer());
       BufferedReader reader = new BufferedReader(new FileReader(file));
       String line = null;
       while ((line = reader.readLine()) != null){
+        makeCard(line);
+      }
+      reader.close();
+    } catch (Exception ex){
+        System.out.println("couldn't read the card file");
+        ex.printStackTrace();
         
-    
+    }
+    // now time to start by showing the first card
+    showNextCard();
+  }
+  
+  private void makeCard(String lineToParse){
+      String[] result = lineToParse.split("/");
+      QuizCard card = new QuizCard(result[0], result[1]);
+      cardList.add(card);
+      System.out.println("made a card");
+  }
+  private void showNextCard(){
+      currentCard = cardList.get(currentCardIndex);
+      currentCardIndex++;
+      display.setText(currentCard.getQuestion());
+      nextButton.setText("Show Answer");
+      isShowAnswer = true
+  }
+  }
